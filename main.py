@@ -8,6 +8,7 @@ from os import listdir
 from time import sleep
 from datetime import datetime
 import threading
+import multiprocessing
 
 CONFIG = json.load(open("config.json", "r"))
 DEFAULT_URL = "https://www.littlebigsnake.com/?linkToken="
@@ -126,10 +127,22 @@ def main(token, name, *args, **kwargs):
 if __name__ == "__main__":
     errors_list = [{"name": "observe", "x": 1320, "y": 630}]
     bots_thread = []  # list of bots threads
+    bots_process = []  # list of bots processes
 
     for account in CONFIG["accounts"]:
-        bots_thread.append(
-            threading.Thread(
+        # bots_thread.append(
+        #     threading.Thread(
+        #         target=main,
+        #         args=(account["token"], account["name"]),
+        #         kwargs={
+        #             "local_storage_key": "server",
+        #             "local_storage_value": account["server"],
+        #             "errors_list": errors_list,
+        #         },
+        #     )
+        # )
+        bots_process.append(
+            multiprocessing.Process(
                 target=main,
                 args=(account["token"], account["name"]),
                 kwargs={
@@ -140,6 +153,10 @@ if __name__ == "__main__":
             )
         )
 
-    for thread in bots_thread:
-        thread.start()
-        delayer(90, name=f"{thread.name}: [+] starting thread")
+    for process in bots_process:
+        process.start()
+        delayer(60, name=f"{process.name}: [+] started process")
+
+    # for thread in bots_thread:
+    #     thread.start()
+    #     delayer(90, name=f"{thread.name}: [+] starting thread")

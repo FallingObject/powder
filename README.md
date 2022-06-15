@@ -10,6 +10,10 @@ A bot that watches for new "Lbs Game Servers" posts and sends a message to a Dis
 
 ```
 $ pip install selenium
+
+$ pip install fastapi
+
+$ pip install uvicorn
 ```
 
 ## extension 📦
@@ -18,6 +22,10 @@ $ pip install selenium
 # Documentations 📚
 
 > [Selenium](https://selenium-python.readthedocs.io/installation.html)
+
+> [FastAPI](https://fastapi.tiangolo.com)
+
+> [Uvicorn](https://www.uvicorn.org/)
 
 
 # external config
@@ -41,6 +49,10 @@ $ pip install selenium
         "left": 0,
         "width": 212,
         "height": 145
+    },
+    "server": {
+        "host": "localhost",
+        "port": 8091
     }
 
 }
