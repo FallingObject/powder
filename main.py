@@ -66,9 +66,12 @@ def main(token, name, *args, **kwargs):
         f'localStorage.setItem("{kwargs["local_storage_key"]}", "{kwargs["local_storage_value"]}")'
     )
 
+    # counters friendship error
     driver.execute_script(
         f'localStorage.setItem("firstFriendGameDialogCooldown", "{datetime.now().timestamp()}")'
     )
+
+    # counters daily reward error
     driver.execute_script(
         f'localStorage.setItem("LastNewsShowTime16", "{datetime.now().timestamp()}")'
     )
@@ -113,7 +116,7 @@ def main(token, name, *args, **kwargs):
             sleep(2)
 
         ACTION.reset_actions()
-        image_name = f"screenshots/{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}.png"
+        image_name = f"screenshots/{name}.png"
         driver.save_screenshot(image_name)
         cropNScale(image_name, 3)
 

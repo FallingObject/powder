@@ -1,4 +1,5 @@
 config.json
 chromedriver.exe
-extensions/adblocker.crx
+extensions/
 __pycache__/
+screenshots/
