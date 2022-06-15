@@ -22,6 +22,7 @@ $ pip install selenium
 
 # external config
 > create ==config.json== file in the root directory of the project with the following content:
+```
 {
     "accounts": [
         {
