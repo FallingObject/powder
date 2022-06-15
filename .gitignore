@@ -1,1 +1,4 @@
 config.json
+chromedriver.exe
+extensions/
+__pycache__/

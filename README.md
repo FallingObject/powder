@@ -6,11 +6,14 @@ A bot that watches for new "Lbs Game Servers" posts and sends a message to a Dis
 # installation 📥
 
 ## Required
-> [ChromeDriver](https://chromedriver.chromium.org/downloads)
+> [ChromeDriver](https://chromedriver.chromium.org/downloads)🚗📚
 
 ```
 $ pip install selenium
 ```
+
+## extension 📦
+> [AdBlocker](https://chrome.google.com/webstore/detail/adblock-plus-free-ad-bloc/cfhdojbkjhnklbpkdaibdccddilifddb)🚫 get crx file and put in the extensions folder [crxExtractor](https://standaloneinstaller.com/online-tools/crx-downloader)🔥
 
 # Documentations 📚
 
@@ -18,14 +21,26 @@ $ pip install selenium
 
 
 # external config
-```
+> create ==config.json== file in the root directory of the project with the following content:
 {
     "accounts": [
-        "token1",
-        "token2",
-        "token3"
-        ...
+        {
+            "token": "your own token",
+            "server": "na_Washington",
+            "name": "Washington blob"
+        },
+        {
+            "token": "your own token",
+            "server": "any other server",
+            "name": "any name"
+        }
     ],
-    "more coming soon" # see [README.md](README.md)
+    "widget_cast": {
+        "top": 30,
+        "left": 0,
+        "width": 212,
+        "height": 145
+    }
+
 }
 ```
