@@ -1,4 +1,4 @@
-# powder ![icon](https://raw.githubusercontent.com/powder-dev/powder/master/logo.png)
+# powder ![icon](https://raw.githubusercontent.com/FallingObject/powder/master/logo.png)
 A bot that watches for new "Lbs Game Servers" posts and sends a message to a Discord chat.
 
 
