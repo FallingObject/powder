@@ -57,3 +57,18 @@ $ pip install uvicorn
 
 }
 ```
+
+
+# run 🏃
+
+### start the bot 🚀
+    ```
+    $ python3 main.py 
+    ```
+recommend to run at 4 accounts max 💪
+
+### start the server 🚀
+
+    ```
+    $ python3 server.py
+    ```
