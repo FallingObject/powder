@@ -29,6 +29,7 @@ def main(token, name, *args, **kwargs):
     chrome_options.add_argument("--ignore-certificate-errors")
     chrome_options.add_argument("--allow-running-insecure-content")
     chrome_options.add_argument("--start-maximized")
+    chrome_options.add_argument("--incognito")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--disable-setuid-sandbox")
     chrome_options.add_argument("--disable-seccomp-filter-sandbox")
@@ -126,7 +127,6 @@ def main(token, name, *args, **kwargs):
 
 if __name__ == "__main__":
     errors_list = [{"name": "observe", "x": 1320, "y": 630}]
-    bots_thread = []  # list of bots threads
     bots_process = []  # list of bots processes
 
     for account in CONFIG["accounts"]:
