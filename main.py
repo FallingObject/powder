@@ -11,8 +11,7 @@ import threading
 import multiprocessing
 
 CONFIG = json.load(open("config.json", "r"))
-DEFAULT_URL = "https://www.littlebigsnake.com/?linkToken="
-playBtn = "#screen-main > section.screen-main__section.section-play > div.screen-main__section__content > div > div.section-play__playbutton > div > p"
+playBtn = '//*[@id="screen-main"]/section[1]/div[2]/div/div[1]/div/p'
 
 
 def main(token, name, *args, **kwargs):
@@ -29,7 +28,7 @@ def main(token, name, *args, **kwargs):
     chrome_options.add_argument("--ignore-certificate-errors")
     chrome_options.add_argument("--allow-running-insecure-content")
     chrome_options.add_argument("--start-maximized")
-    chrome_options.add_argument("--incognito")
+    # chrome_options.add_argument("--incognito")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--disable-setuid-sandbox")
     chrome_options.add_argument("--disable-seccomp-filter-sandbox")
@@ -55,7 +54,7 @@ def main(token, name, *args, **kwargs):
 
     ACTION = ActionChains(driver)
 
-    driver.get(DEFAULT_URL)  # open the website
+    driver.get(f"https://littlebigsnake.com/?login_token={token}")  # open the website
 
     delayer(3, name=f"{name}: [+] opening window")
 
@@ -82,14 +81,11 @@ def main(token, name, *args, **kwargs):
     driver.refresh()  # refresh page
     print("refreshed the page")
 
-    # click the play button
-    driver.find_element(By.CSS_SELECTOR, playBtn).click()
-    print("clicked the play button")
 
-    delayer(2, name=f"{name}: [+] waiting for page to load")
     WebDriverWait(driver, 240).until(
         lambda driver: driver.find_element(By.CLASS_NAME, "current-screen-client")
     )
+    
     delayer(4, name=f"{name}: [+] waiting for game to load")
     print("game loaded")
 
@@ -129,6 +125,13 @@ if __name__ == "__main__":
     errors_list = [{"name": "observe", "x": 1320, "y": 630}]
     bots_process = []  # list of bots processes
 
+    account = {
+            "token": "TEIhnCJBX7vUsjL72ca8ce2",
+            "server": "na_Washington",
+            "name": "Washington"
+        }
+        
+
     for account in CONFIG["accounts"]:
         bots_process.append(
             multiprocessing.Process(
@@ -144,4 +147,5 @@ if __name__ == "__main__":
 
     for process in bots_process:
         process.start()
-        delayer(60, name=f"{process.name}: [+] started process")
+        if len(bots_process) > 1:
+            delayer(60, name=f"{process.name}: [+] started process")

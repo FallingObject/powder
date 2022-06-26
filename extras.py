@@ -7,16 +7,17 @@ from time import sleep
 def close_external_window(
     driver, window_name: str = "Little Big Snake - Official Website"
 ):
+    print(len(driver.window_handles))
     if len(driver.window_handles) > 1:
         for i in range(len(driver.window_handles)):
+            print(driver.title)
             try:
                 child = driver.window_handles[i]
             except IndexError as e:
-                child = driver.window_handles[i - 1]
-                print(e)
-                # return "fail"
+                child = driver.window_handles[0]
             except Exception as e:
-                # print(e)
+                print('all exception')
+                print(e)
                 return "fail"
 
             driver.switch_to.window(child)
